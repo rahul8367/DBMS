@@ -1,0 +1,66 @@
+1.
+
+Entity : Student
+PK : Stdno
+Other Attributes : StdName, StdAddress, StdCity, StdState, StdZip, StdEmail
+
+Entity : Loan
+PK : LoanNo
+Other Attributes : ProcDate, DisbMethod, DiskBank, DateAuth, NoteValue, Subsidized, Rate, StdNo, InstID, LenderNo
+
+Entity : Institution
+PK : InstID
+Other Attributes : InstName, InstMascot
+
+Entity : Lender
+PK : LenderNo
+Other Attributes : LendName
+
+
+2.
+
+Entity : Loan
+Foreign keys : StdNo references Student 		- Not null
+		InstID references Institution		- Not null
+		LenderNo references Lender		- Not null
+
+
+3.
+
+No m-n relationships.
+
+
+4.
+
+Student, Institution and Lender are in 1-m relationship with Loan
+So, Loan should have StdNo, InstID, LenderNo as foreign key attributes.
+
+Loan and DisburseLine are connected in 1-m relationship
+So, DisburseLine must have loanNo as foreign key attribute.
+
+
+5.
+
+Account and PartAccount
+1 Account has 1 or many PartAccounts
+1 PartAccount corresponds to only 1 Account
+
+Account : AcctId, AcctName, Balance
+PartAccount : PartAcctId, AcctId(foreign key), PartAcctName, Balance
+
+
+6.
+
+Owner : OwnId, OwnName, OwnPhone
+Primary Key : OwnId
+
+Property : PropId, BildName, UnitNo, Brdms
+Primary Key : PropId
+
+Shares : ShareId, OwnId(Owner), PropId(Property), StartWeek, EndWeek
+Foreign Key : PropId References Property 
+	      OwnId References Owner
+Columns : Attributes Listed	      
+	      
+	      
+	     
